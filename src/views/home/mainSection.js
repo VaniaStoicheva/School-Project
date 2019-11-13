@@ -1,5 +1,6 @@
 import React from "react";
 import Kourse from "./kourse";
+import data  from '../../data';
 
  
 class Main extends React.Component{
@@ -13,7 +14,7 @@ class Main extends React.Component{
             <section class="cats">
                 <ul>
                     <li>
-                    <Kourse kourse={kourse}/>
+                    <Kourse kourse={data[0]}/>
                     </li>
                 </ul>
             </section>
