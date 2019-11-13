@@ -13,10 +13,10 @@ const Kourse=({kourse})=>{
         <p><span>Hours: </span>{kourse.hours}</p>
         <p><span>Day Visit: </span>{kourse.dayVisit}</p>
         <p><span>Theachers: </span>{kourse.theachers}</p>
-         <ul class="buttons">
-             <li class="btn edit"><a href="">Change Info</a></li>
-            <li class="btn delete"><a href="">New Home</a></li> 
-        </ul>  
+        {/*  <ul class="buttons">
+             <li class="btn edit"><a href="">Edit Info</a></li>
+            <li class="btn delete"><a href="">Delete</a></li> 
+        </ul> */}  
         </li>
         
     )
