@@ -1,5 +1,6 @@
 export default [
     {
+        id:1,
         title:"Математика 7 клас",
         description:"Подготовка за НВО",
         hours: 120,
@@ -8,6 +9,7 @@ export default [
         img:"https://goodbet.com.ua/wp-content/uploads/2019/01/matematika-350x250.jpg"
     },
     {
+        id:2,
         title:"Български език и литература 7 клас",
         description:"Подготовка за НВО",
         hours: 120,
@@ -17,6 +19,7 @@ export default [
 
     },
     {
+        id:3,
         title:"Програмиране 1-3",
         description:"Scratch , Micro:bit",
         hours: 80,

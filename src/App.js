@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from "./views/home/navigation";
-import Search from "./views/home/search";
-import Main from "./views/home/mainSection";
+import Navigation from "./Navigation/Navigation";
+import Search from "./Search/Search";
+import HomePage from "./HomePage/HomePage";
+import "./HomePage/HomePage.css";
 
 
-import './App.css';
 
 class App extends React.Component {
   constructor(props){
@@ -16,7 +16,7 @@ class App extends React.Component {
       <div className="App">
           <Navigation />
           <Search />
-         <Main />
+         <HomePage />
       </div>
     );
   }

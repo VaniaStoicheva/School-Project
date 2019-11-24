@@ -1,6 +1,7 @@
 import React from 'react';
+import "./Navigation.css";
 import  {BrowserRouter, Route, Switch, withRouter, NavLink} from 'react-router-dom';
-import AddKourse from "../kourses/addKourse";
+import AddKourse from "../AddKourse/AddKourse";
 
 const Navigation=()=>{
     return(

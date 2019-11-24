@@ -1,0 +1,35 @@
+.navigation {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.navigation li a::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f015";
+    font-weight: 900;
+    padding: 5px;
+}
+
+.navigation li:nth-child(2) a::before {
+    content: "\f055";   
+}
+
+.navigation li:nth-child(3) a::before {
+    content: "\f1b0";
+}
+
+.navigation li:nth-child(4) a::before {
+    content: "\f2f6";
+}
+
+.navigation li:nth-child(5) a::before {
+    content: "\f234";
+}

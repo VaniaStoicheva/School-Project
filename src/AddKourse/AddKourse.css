@@ -1,81 +1,3 @@
-/* .App {
-  text-align: center;
-} */
-
-/* .App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
- */
- @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    font-family: 'Lato', sans-serif;
-    background-color: #F2F2F2;
-    color: #333;
-}
-
-/* .navigation {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-    padding: 1rem;
-    background-color: #fff;
-}
-
-.navigation li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.navigation li a::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f015";
-    font-weight: 900;
-    padding: 5px;
-}
-
-.navigation li:nth-child(2) a::before {
-    content: "\f055";   
-}
-
-.navigation li:nth-child(3) a::before {
-    content: "\f1b0";
-}
-
-.navigation li:nth-child(4) a::before {
-    content: "\f2f6";
-}
-
-.navigation li:nth-child(5) a::before {
-    content: "\f234";
-}
-
-h1 {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 1rem;
-}
-
 form {
     display: flex;
     justify-content: center;
@@ -114,7 +36,7 @@ form button {
     margin-bottom: 1rem;
     border: none;
     padding: 15px;
-} */
+}
 
 form button:hover {
     background-color: white;

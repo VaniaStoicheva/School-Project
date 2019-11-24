@@ -1,5 +1,7 @@
-import React from "react";
- class AddKourse extends React.Component{
+import React,{Component} from "react";
+import "./AddKourse.css";
+
+ class AddKourse extends Component{
      constructor(props){
          super(props);
          this.state=[
