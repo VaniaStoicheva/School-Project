@@ -40,7 +40,7 @@ function Navigation() {
           <img id="logo" src="/logo.svg" alt="my-app-logo" />
         </Link>
         <Link to="/">Home</Link>
-        <Link to="/аllKourses">Kourses</Link>
+        <Link to="/allKourses">Kourses</Link>
         <Link to="/addNewKourse">AddNewKourse</Link>
         <Link to="/addToKourse">AddToKourse</Link>
         <Link to="/posts">Posts</Link>

@@ -12,6 +12,12 @@ import AddToKourse from "../Kourse/AddToKourse/AddToKourse";
 import Posts from "../Kourse/Posts/Posts";
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+function render(title, Cmp) {
+  return function ({ match }) {
+    debugger;
+    return <Main title={title}><Cmp match={match} /></Main>
+  };
+}
 
 function App() {
   return (
@@ -23,7 +29,7 @@ function App() {
           
           <Switch>
             <Route path="/" exact><Redirect to="/allKourses" /></Route>
-            <Route path="/allKourses" component={AllKourse} />
+            <Route path="/allKourses" render={render('All Kourse', AllKourse)} />
             <Route path="/addNewKourse" component={AddNewKourse}/>
             <Route path="/addToKourse" component={AddToKourse} />
             <Route path="/posts" component={Posts} />

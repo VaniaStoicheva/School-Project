@@ -26,8 +26,8 @@ import kourseService from "../../services/KourseService";
             <p><span>Day Visit: </span>{this.props.kourse.dayVisit}</p>
             <p><span>Theachers: </span>{this.props.kourse.theachers}</p>
               <ul class="buttons">
-                 <li class="btn edit"><a href="">Edit Info</a></li>
-                <li class="btn delete"><a href="">Delete</a></li> 
+                 <li className="btn edit"><a href="">Edit Info</a></li>
+                <li className="btn delete"><a href="">Delete</a></li> 
             </ul>  
             </li>
             
