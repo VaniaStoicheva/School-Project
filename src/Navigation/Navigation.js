@@ -1,20 +1,30 @@
 import React from 'react';
 import "./Navigation.css";
-import  {BrowserRouter, Route, Switch, withRouter, NavLink} from 'react-router-dom';
-import AddKourse from "../AddKourse/AddKourse";
+import Link from "../shared/Link/Link";
 
-const Navigation=()=>{
+
+/* const Navigation=()=>{
     return(
     
         <nav>
             <ul class="navigation">
-                <li><a href="">Home Page</a></li>
+           
+    
+      <Link to="/">
+        <img id="logo" src="/logo192.png" alt="my-app-logo" />
+      </Link>
+      <Link to="/">Posts</Link>
+      <Link to="/create-posts">New Post</Link>
+      <Link to="/profile">Profile</Link>
+      <Link to="/register">Register</Link>
+      <Link to="/login">Login</Link>
+    
+  
+                <li><a href="">Home/За нас</a></li>
+                <li><a href="">Kourses/Курсове</a></li>
                 <li><a href="">Add Student</a></li>
-                <li><a href="">Kourses</a></li>
-                <BrowserRouter>
-                <li><Route path="/addKourse" render={()=><AddKourse /> } /></li> 
-                </BrowserRouter>
-               
+                
+                
             
             
             </ul>
@@ -22,5 +32,19 @@ const Navigation=()=>{
         
         
     )
-}
+} */
+function Navigation() {
+    return <nav className="navigation">
+      <ul>
+        <Link to="/">
+          <img id="logo" src="/logo192.png" alt="my-app-logo" />
+        </Link>
+        <Link to="/">Posts</Link>
+        <Link to="/create-posts">New Post</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/login">Login</Link>
+      </ul>
+    </nav>;
+  };
 export default Navigation;

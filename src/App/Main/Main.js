@@ -1,7 +1,7 @@
 import React from "react";
 import Kourse from "../Kourses/Kourse";
 import data  from '../data';
-import "../HomePage/HomePage";
+import "../Main/Main";
 import kourseService from "../services/KourseService";
 
  
