@@ -37,11 +37,13 @@ function Navigation() {
     return <nav className="navigation">
       <ul>
         <Link to="/">
-          <img id="logo" src="/logo192.png" alt="my-app-logo" />
+          <img id="logo" src="/logo.svg" alt="my-app-logo" />
         </Link>
-        <Link to="/">Posts</Link>
-        <Link to="/create-posts">New Post</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/">Home</Link>
+        <Link to="/аllKourses">Kourses</Link>
+        <Link to="/addNewKourse">AddNewKourse</Link>
+        <Link to="/addToKourse">AddToKourse</Link>
+        <Link to="/posts">Posts</Link>
         <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
       </ul>

@@ -1,8 +1,8 @@
 import React from "react";
-import Kourse from "../Kourses/Kourse";
-import data  from '../data';
+import Kourse from "../../Kourse/AllKourses/AllKourse";
+import data  from '../../data';
 import "../Main/Main";
-import kourseService from "../services/KourseService";
+import kourseService from "../../services/KourseService";
 
  
 class Main extends React.Component{

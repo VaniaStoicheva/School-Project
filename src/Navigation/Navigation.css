@@ -3,12 +3,12 @@
     list-style: none;
     justify-content: space-evenly;
     padding: 1rem;
-    background-color: #fff;
+    background-color: #112527;
 }
 
 .navigation li a {
     text-decoration: none;
-    color: #333;
+    color:#112527;
 }
 
 .navigation li a::before {
@@ -33,3 +33,17 @@
 .navigation li:nth-child(5) a::before {
     content: "\f234";
 }
+.Navigation {
+    width: 100%;
+    height: 14vh;
+    background-color: #234465;
+    color: white;
+    position: fixed;
+    top: 0;
+    border-bottom: 2px solid #ffa000;
+    border-top: 2px solid #ffa000;
+  }
+  
+  #logo {
+    width: 56px;
+  }

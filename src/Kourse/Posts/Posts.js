@@ -1,22 +1,23 @@
 import React from "react";
-import "./Kourse.css";
-import kourseService from "../services/KourseService";
+import "./Posts.css";
+import kourseService from "../../services/KourseService";
 
 
 
 
-  class Kourse extends React.Component{ 
+  class Posts extends React.Component{ 
     constructor(props){
         super(props)
     }
-    state={
+    /* state={
         kourse:null
-    }
+    } */
         
     render(){
-        const kourse=this.props;
+       return <h1>Posts</h1>
+        /* const kourse=this.props;
            return  (
-              
+            
            <li>
             <img src={this.props.kourse.img} />
             <h3></h3>
@@ -31,12 +32,12 @@ import kourseService from "../services/KourseService";
             </ul>  
             </li>
             
-           )
+           )*/
              }
         
-            
+             
     
 }
       
 
-export default Kourse;
+export default Posts;

@@ -1,7 +1,7 @@
 import React,{Component} from "react";
-import "./AddKourse.css";
+import "./AddNewKourse.css";
 
- class AddKourse extends Component{
+ class AddNewKourse extends Component{
      constructor(props){
          super(props);
          this.state=[
@@ -20,7 +20,7 @@ import "./AddKourse.css";
          return(
             <div>
             <form action="" method="" class="cat-form" enctype="multipart/form-data">
-                <h2>Add Kourse</h2>
+                <h2>Add New Kourse</h2>
                 <label for="name">Title</label>
                 <input name="name" type="text" id="title" />
                 <label for="description">Description</label>
@@ -45,4 +45,4 @@ import "./AddKourse.css";
          )
      }
  }
- export default AddKourse;
+ export default AddNewKourse;
