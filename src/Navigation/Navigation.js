@@ -8,9 +8,9 @@ import Link from "../shared/Link/Link";
 function Navigation({ isLogged }) {
     return <nav className="Navigation">
       <ul>
-        <Link to="/">
-          <img id="logo" src="/logo.png" alt="my-app-logo" />
-        </Link>
+      <Link to="/">
+        <img id="logo" src="/logo.svg" alt="my-app-logo" />
+      </Link>
         <Link to="/">Home</Link>
         <Link to="/allCourses">Courses</Link>
         {isLogged && <Link to="/addNewCourse">AddNewCourse</Link>}
