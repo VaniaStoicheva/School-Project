@@ -5,7 +5,7 @@ export default function withForm(Cmp, initialState, schema) {
 
     state = {
       form: initialState,
-      errors: null
+      errors: undefined
     };
 
     
@@ -32,7 +32,11 @@ export default function withForm(Cmp, initialState, schema) {
       return this.state.errors;
     }
    runValidation=()=>{
-    return schema.validate(this.state.form,{abortEarly:false}).then(()=>this.state.form)
+    return schema.validate(this.state.form,{abortEarly:false})
+    .then(()=>{
+      this.setState({errors:undefined});
+      return this.state.form;
+    })
     .catch(err=>{
     const errors= err.inner.reduce((acc,{path,message})=>{
       acc[path]=(acc[path] || []).concat(message);

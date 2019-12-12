@@ -1,18 +1,56 @@
 import React from 'react';
 import '../shared/styles/LoginAndRegister.css';
+import withForm from '../shared/hocs/whitForm';
+import * as yup from 'yup';
 
-export default function Login() {
-  return <form className="Login">
-    <div className="form-control">
-      <label>Username</label>
-      <input type="text" />
-    </div>
-    <div className="form-control">
-      <label>Password</label>
-      <input type="password" />
-    </div>
-    <div className="form-control">
-      <button type="submit">Login</button>
-    </div>
-  </form>;
+class Login extends React.Component {
+
+  usernameChangeHandler = this.props.controlChangeHandlerFactory('username');
+  passwordChangeHandler = this.props.controlChangeHandlerFactory('password');
+
+  /* submitHandler = () => {
+    const errors = this.props.getFormErrorState();
+    if (!!errors) { return; }
+    const data = this.props.getFormState();
+    //this.props.login(this.props.history, data);
+  } */
+  submitHandler=()=>{
+    this.props.runValidation()
+    .then(formData=>console.log(formData))
+  };
+  getFirstInputErrors=name=>{
+    const errorState=this.props.getFormErrorState();
+    return errorState && errorState[name] && errorState[name][0];
+  }
+  render() {
+    const usermameError=this.getFirstInputErrors('username');
+    const passwordError=this.getFirstInputErrors('password');
+
+    return <form className="Login">
+      <div className="form-control">
+        <label>Username</label>
+        <input type="text" onChange={this.usernameChangeHandler} />
+        {usermameError &&<div className='error'>{usermameError}</div>}
+      </div>
+      <div className="form-control">
+        <label>Password</label>
+        <input type="password" onChange={this.passwordChangeHandler} />
+        {passwordError &&<div className='error'>{passwordError}</div>}
+      </div>
+      <div className="form-control">
+        <button type="button" onClick={this.submitHandler}>Login</button>
+      </div>
+    </form>;
+  }
 }
+const schema=yup.object({
+  username: yup.string('Username shuld be a string')
+  .required('Username is required')
+  .min(4,'Username must be more than 4 chars'),
+    password: yup.string('Password must be a string')
+    .required('Password is required')
+    .min(6,'Password must be more than 6 chars')
+})
+    
+    
+export default withForm(Login, { username: '', password: '' },schema);
