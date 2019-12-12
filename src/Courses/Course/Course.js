@@ -1,6 +1,6 @@
 import React from "react";
 import "./Course.css";
-import kourseService from "../../services/CourseService";
+import courseService from "../../services/CourseService";
 
 
 
@@ -10,21 +10,21 @@ import kourseService from "../../services/CourseService";
         super(props)
     }
     state={
-        kourse:null
+        course:null
     }
         
     render(){
-        const kourse=this.props;
+        const course=this.props;
            return  (
             
            <li>
-            <img src={this.props.kourse.img} />
+            <img src={this.props.course.img} />
             <h3></h3>
-            <p><span>Title: </span>{this.props.kourse.title}</p>
-            <p><span>Description: </span>{this.props.kourse.description}</p>
-            <p><span>Hours: </span>{this.props.kourse.hours}</p>
-            <p><span>Day Visit: </span>{this.props.kourse.dayVisit}</p>
-            <p><span>Theachers: </span>{this.props.kourse.theachers}</p>
+            <p><span>Title: </span>{this.props.course.title}</p>
+            <p><span>Description: </span>{this.props.course.description}</p>
+            <p><span>Hours: </span>{this.props.course.hours}</p>
+            <p><span>Day Visit: </span>{this.props.course.dayVisit}</p>
+            <p><span>Theachers: </span>{this.props.course.theachers}</p>
               <ul class="buttons">
                  <li className="btn edit"><a href="">Edit Info</a></li>
                 <li className="btn delete"><a href="">Delete</a></li> 

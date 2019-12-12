@@ -23,7 +23,7 @@ class Register extends React.Component {
         if(!!errors){return;}
         const data=this.props.getFormState();
         userService.register(data).then(()=>{
-          this.props.match.history.push('/login');
+          this.props.history.push('/login');
         });
 
       };
@@ -37,7 +37,7 @@ class Register extends React.Component {
     const rePasswordError=this.getFirstInputErrors('rePassword');
 
     return <form className="Register">
-      <h1>Register</h1>
+      
     <div className="form-control">
       <label>Username</label>
       <input type="text" onChange={this.usernameOnChangeHandler} />

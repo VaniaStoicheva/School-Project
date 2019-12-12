@@ -38,9 +38,9 @@ function App() {
             <Route path="/addNewCourse" component={AddNewCourse}/>
             <Route path="/addToCourse" component={AddToCourse} />
             <Route path="/posts" component={Posts} />
-            <Route path="/register" render={render('Register',Register)} />
+           
             <Route path="/register" render={render('Register', Register)} />
-            {/* <Route path="/register" component={Register} /> */}
+            
             <Route path="/login" component={Login} />
             <Route path="/notfound" componenet={NotFound} />
           </Switch>
