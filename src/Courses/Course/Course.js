@@ -1,11 +1,11 @@
 import React from "react";
-import "./AllKourse.css";
-import kourseService from "../../services/KourseService";
+import "./Course.css";
+import kourseService from "../../services/CourseService";
 
 
 
 
-  class Kourse extends React.Component{ 
+  class Course extends React.Component{ 
     constructor(props){
         super(props)
     }
@@ -39,4 +39,4 @@ import kourseService from "../../services/KourseService";
 }
       
 
-export default Kourse;
+export default Course;

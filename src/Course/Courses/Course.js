@@ -1,21 +1,20 @@
 import React from "react";
-import "./Posts.css";
-import kourseService from "../../services/KourseService";
+import "./Course.css";
+import kourseService from "../../services/CourseService";
 
 
 
 
-  class Posts extends React.Component{ 
+  class Course extends React.Component{ 
     constructor(props){
         super(props)
     }
-    /* state={
+    state={
         kourse:null
-    } */
+    }
         
     render(){
-       return <h1>Posts</h1>
-        /* const kourse=this.props;
+        const kourse=this.props;
            return  (
             
            <li>
@@ -27,17 +26,17 @@ import kourseService from "../../services/KourseService";
             <p><span>Day Visit: </span>{this.props.kourse.dayVisit}</p>
             <p><span>Theachers: </span>{this.props.kourse.theachers}</p>
               <ul class="buttons">
-                 <li class="btn edit"><a href="">Edit Info</a></li>
-                <li class="btn delete"><a href="">Delete</a></li> 
+                 <li className="btn edit"><a href="">Edit Info</a></li>
+                <li className="btn delete"><a href="">Delete</a></li> 
             </ul>  
             </li>
             
-           )*/
+           )
              }
         
-             
+            
     
 }
       
 
-export default Posts;
+export default Course;

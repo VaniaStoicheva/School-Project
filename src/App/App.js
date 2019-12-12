@@ -6,16 +6,21 @@ import Main from "./Main/Main";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
-import AllKourse from "../Kourse/AllKourses/AllKourse";
-import AddNewKourse from "../Kourse/AddNewKourse/AddNewKourse";
-import AddToKourse from "../Kourse/AddToKourse/AddToKourse";
-import Posts from "../Kourse/Posts/Posts";
+import AllCourses from "../Courses/AllCourses/AllCourses";
+import AddNewCourse from "../Courses/AddNewCourse/AddNewCourse";
+import AddToCourse from "../Courses/AddToCourse/AddToCourse";
+import Posts from "../Posts/Posts";
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-function render(title, Cmp) {
+/* function render(title, Cmp) {
   return function ({ match }) {
-    debugger;
+
     return <Main title={title}><Cmp match={match} /></Main>
+  };
+} */
+function render(title, Cmp, otherProps) {
+  return function (props) {
+    return <Main title={title} ><Cmp {...props} {...otherProps} /></Main>
   };
 }
 
@@ -28,12 +33,14 @@ function App() {
         <div className="Container">
           
           <Switch>
-            <Route path="/" exact><Redirect to="/allKourses" /></Route>
-            <Route path="/allKourses" render={render('All Kourse', AllKourse)} />
-            <Route path="/addNewKourse" component={AddNewKourse}/>
-            <Route path="/addToKourse" component={AddToKourse} />
+            <Route path="/" exact><Redirect to="/allCourses" /></Route>
+            <Route path="/allCourses" render={render('All Course', AllCourses)} />
+            <Route path="/addNewCourse" component={AddNewCourse}/>
+            <Route path="/addToCourse" component={AddToCourse} />
             <Route path="/posts" component={Posts} />
-            <Route path="/register" component={Register} />
+            <Route path="/register" render={render('Register',Register)} />
+            <Route path="/register" render={render('Register', Register)} />
+            {/* <Route path="/register" component={Register} /> */}
             <Route path="/login" component={Login} />
             <Route path="/notfound" componenet={NotFound} />
           </Switch>

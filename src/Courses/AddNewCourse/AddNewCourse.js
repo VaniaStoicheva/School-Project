@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import "./AddNewKourse.css";
+import "./AddNewCourse.css";
 import whitForm from '../../shared/hocs/whitForm';
 
 import * as yup from 'yup';

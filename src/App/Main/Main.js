@@ -1,40 +1,13 @@
-import React from "react";
-import Kourse from "../../Kourse/AllKourses/AllKourse";
-import data  from '../../data';
-import "../Main/Main";
-import kourseService from "../../services/KourseService";
+import React from 'react';
+import './Main.css';
 
- 
-class Main extends React.Component{
-    constructor(props){
-        super(props)
-    }
- 
-state={
-  kourses:null
-};
-
-componentDidMount(){
-  kourseService.load().then(kourses=>{
-      this.setState({kourses})
-  })
+function Main({ children, title }) {
+  return (
+    <div className="Main">
+      <h1>{title}</h1>
+      {children}
+    </div>
+  );
 }
-    render(){
-        const {kourse}=this.props;
-        return(
-            <main>
-            <section class="cats">
-                <ul>
-                    <li>
-                   
-   
-                     <Kourse kourse={data[0]}/> 
-                    </li>
-                </ul>
-            </section>
-            </main>
-         )
-    }
-     
- }
- export default Main;
+
+export default Main;
