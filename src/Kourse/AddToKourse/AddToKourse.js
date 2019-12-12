@@ -43,11 +43,11 @@ import "./AddToKourse.css";
         <form onSubmit={this.handleSubmit} action="" method="" className="cat-form">
             <h1>Add Student To Course</h1>
             <div>
-            <label htmlFor="name">Student name:</label>
+            <label htmlFor="name">Student name:</label><br/>
             <input name="sname" onChange={this.handleChange}  type="text" value={sname} id="sname" />
             </div>
              <div>
-            <label htmlFor="name">Kourse:</label>
+            <label htmlFor="name">Kourse:</label><br />
              <select name="kourse" onChange={this.handleChange} value={kourse}>
                  <option value="">Choose...</option>
                     <option name="mat" onChange={this.handleChange} value="Matematiks">Matematiks</option>
