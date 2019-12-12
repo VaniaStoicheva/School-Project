@@ -42,7 +42,7 @@ import * as yup from 'yup';
          return(
             <div>
             <form  className="cat-form" >
-                <h2>Add New Kourse</h2>
+                
                 <label htmlFor="name">Title</label>
                 <input name="title" type="text" onChange={this.titleOnChangeHandler} />
                 {titleError &&<div className='error'>{titleError}</div>}

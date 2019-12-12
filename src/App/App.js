@@ -9,45 +9,73 @@ import NotFound from "../NotFound/NotFound";
 import AllCourses from "../Courses/AllCourses/AllCourses";
 import AddNewCourse from "../Courses/AddNewCourse/AddNewCourse";
 import AddToCourse from "../Courses/AddToCourse/AddToCourse";
+import userService from '../services/UserService';
+import Logout from '../Logout/Logout';
 import Posts from "../Posts/Posts";
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-/* function render(title, Cmp) {
-  return function ({ match }) {
 
-    return <Main title={title}><Cmp match={match} /></Main>
-  };
-} */
 function render(title, Cmp, otherProps) {
   return function (props) {
     return <Main title={title} ><Cmp {...props} {...otherProps} /></Main>
   };
 }
 
-function App() {
+function parseCookeis() {
+  return document.cookie.split('; ').reduce((acc, cookie) => {
+    const [cookieName, cookieValue] = cookie.split('=');
+    acc[cookieName] = cookieValue;
+    return acc;
+  }, {})
+}
+
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    const cookies=parseCookeis();
+    const isLogged=!!cookies['x-auth-token'];
+    this.state={ isLogged }
+  }
+
+  logout = (history) => {
+    userService.logout().then(() => {
+      this.setState({ isLogged: false });
+      history.push('/');
+      return null;
+    });
+  }
+
+  login = (history, data) => {
+    userService.login(data).then(() => {
+      this.setState({ isLogged: true });
+      history.push('/');
+    });
+  }
+  render(){
+    const { isLogged }=this.state;
   return (
     <BrowserRouter>
       <div className="App">
        {/*<Loader local={true} isLoading={false} />  */} 
-        <Navigation />
+        <Navigation isLogged={isLogged}/>
         <div className="Container">
           
           <Switch>
             <Route path="/" exact><Redirect to="/allCourses" /></Route>
             <Route path="/allCourses" render={render('All Course', AllCourses)} />
-            <Route path="/addNewCourse" component={AddNewCourse}/>
-            <Route path="/addToCourse" component={AddToCourse} />
-            <Route path="/posts" component={Posts} />
-           
+            <Route path="/addNewCourse" render={render('Add New Course',AddNewCourse, { isLogged })}/>
+            <Route path="/addToCourse" render={render('Add Student to Course',AddToCourse, { isLogged })} />
+            <Route path="/posts" render={render('Posts',Posts, { isLogged })} />
             <Route path="/register" render={render('Register', Register)} />
-            
-            <Route path="/login" component={Login} />
-            <Route path="/notfound" componenet={NotFound} />
+            <Route path="/login" render={render('Login',Login, {isLogged, login:this.login})} />
+            <Route path="/logout" render={render('Logout',Logout, {isLogged, logout:this.logout})} />
+            <Route path="/notfound" render={render('NotFound',NotFound)} />
           </Switch>
         </div>
-        <Footer />
+        <Footer isLogged={isLogged}/>
       </div>
     </BrowserRouter>
   );
+}
 }
 export default App;

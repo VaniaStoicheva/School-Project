@@ -1,6 +1,7 @@
 import React from 'react';
 import '../shared/styles/LoginAndRegister.css';
 import withForm from '../shared/hocs/whitForm';
+import userService from '../services/UserService';
 import * as yup from 'yup';
 
 class Login extends React.Component {
@@ -16,8 +17,17 @@ class Login extends React.Component {
   } */
   submitHandler=()=>{
     this.props.runValidation()
-    .then(formData=>console.log(formData))
-  };
+   .then(formData=>console.log(formData)) ;
+   const errors=this.props.getFormErrorState();
+   if(!!errors){return;}
+   const data=this.props.getFormState();
+   this.props.login(this.props.history, data);
+   /* userService.login(data).then(()=>{
+     this.props.history.push('/');
+    ; 
+   });*/
+
+ };
   getFirstInputErrors=name=>{
     const errorState=this.props.getFormErrorState();
     return errorState && errorState[name] && errorState[name][0];
