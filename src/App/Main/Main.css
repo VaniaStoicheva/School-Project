@@ -42,7 +42,7 @@
 
 
 .cats ul li .buttons .edit a{
-    background-color: #3d99e3;
+    background-color:#078a94;
 }
 
 .cats ul li .buttons .delete a{
@@ -67,7 +67,7 @@
 }
 .cats li h3 {
     text-align: center;
-    margin: 0.5rem;
+    margin: 2rem;
 }
 
 .cats li span {
@@ -93,7 +93,7 @@
 }
 
 .cat-form h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -111,6 +111,6 @@
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: lightskyblue;
+    background-color: #078a94;
     margin-bottom: 1.5rem;
 }

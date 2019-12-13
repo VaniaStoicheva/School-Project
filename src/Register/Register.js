@@ -39,6 +39,7 @@ class Register extends React.Component {
     return <form className="Register">
       
     <div className="form-control">
+    <h1>Register</h1>
       <label>Username</label>
       <input type="text" onChange={this.usernameOnChangeHandler} />
       {usermameError &&<div className='error'>{usermameError}</div>}

@@ -58,18 +58,19 @@ class App extends React.Component {
       <div className="App">
        {/*<Loader local={true} isLoading={false} />  */} 
         <Navigation isLogged={isLogged}/>
+        <h1>Alegria -курсове за многознайковци</h1>
         <div className="Container">
           
           <Switch>
             <Route path="/" exact><Redirect to="/allCourses" /></Route>
-            <Route path="/allCourses" render={render('All Course', AllCourses)} />
-            <Route path="/addNewCourse" render={render('Add New Course',AddNewCourse, { isLogged })}/>
-            <Route path="/addToCourse" render={render('Add Student to Course',AddToCourse, { isLogged })} />
-            <Route path="/posts" render={render('Posts',Posts, { isLogged })} />
-            <Route path="/register" render={render('Register', Register)} />
-            <Route path="/login" render={render('Login',Login, {isLogged, login:this.login})} />
-            <Route path="/logout" render={render('Logout',Logout, {isLogged, logout:this.logout})} />
-            <Route path="/notfound" render={render('NotFound',NotFound)} />
+            <Route path="/allCourses" render={render('', AllCourses)} />
+            <Route path="/addNewCourse" render={render('', AddNewCourse, { isLogged })}/>
+            <Route path="/addToCourse" render={render('', AddToCourse, { isLogged })} />
+            <Route path="/posts" render={render('', Posts, { isLogged })} />
+            <Route path="/register" render={render('', Register)} />
+            <Route path="/login" render={render('', Login, {isLogged, login:this.login})} />
+            <Route path="/logout" render={render('Logout', Logout, {isLogged, logout:this.logout})} />
+            <Route path="/notfound" render={render('NotFound', NotFound)} />
           </Switch>
         </div>
         <Footer isLogged={isLogged}/>

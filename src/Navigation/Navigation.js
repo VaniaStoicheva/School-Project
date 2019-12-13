@@ -5,11 +5,14 @@ import Link from "../shared/Link/Link";
 
 
 
+
 function Navigation({ isLogged }) {
-    return <nav className="Navigation">
+    return <nav className="navigation">
+      
       <ul>
       <Link to="/">
-        <img id="logo" src="/logo.svg" alt="my-app-logo" />
+        
+        <img  src="logod.bmp" alt="my-app-logo" />
       </Link>
         <Link to="/">Home</Link>
         <Link to="/allCourses">Courses</Link>
@@ -21,5 +24,6 @@ function Navigation({ isLogged }) {
         {isLogged && <Link to="/logout">Logout</Link>}
       </ul>
     </nav>;
+   
   };
 export default Navigation;

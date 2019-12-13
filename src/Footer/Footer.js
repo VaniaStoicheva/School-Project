@@ -5,7 +5,7 @@ import Link from '../shared/Link/Link';
 function Footer({isLogged}) {
   return <nav className="Footer">
     <ul>
-    <Link to="/">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/allCourses">Courses</Link>
         {isLogged && <Link to="/addNewCourse">AddNewCourse</Link>}
         {isLogged && <Link to="/addToCourse">AddToCourse</Link>}

@@ -1,14 +1,14 @@
 .navigation {
-    display: flex;
+    display: block;
     list-style: none;
     justify-content: space-evenly;
     padding: 1rem;
-    background-color: #112527;
+    background-color: #07717a;
 }
 
 .navigation li a {
     text-decoration: none;
-    color:#112527;
+    color:#f9fafa;
 }
 
 .navigation li a::before {
@@ -19,19 +19,25 @@
 }
 
 .navigation li:nth-child(2) a::before {
-    content: "\f055";   
+    content: "\f015";   
 }
 
 .navigation li:nth-child(3) a::before {
-    content: "\f1b0";
+    content: "\f05a";
 }
 
 .navigation li:nth-child(4) a::before {
-    content: "\f2f6";
+    content: "\f055";
 }
 
 .navigation li:nth-child(5) a::before {
     content: "\f234";
+}
+.navigation li:nth-child(6) a::before {
+    content: "\f02c";
+}
+.navigation li:nth-child(7) a::before {
+    content: "\f2f6";
 }
 .Navigation {
     width: 100%;
@@ -45,5 +51,6 @@
   }
   
   #logo {
-    width: 238px;
+    width: 100%;
+   
   }

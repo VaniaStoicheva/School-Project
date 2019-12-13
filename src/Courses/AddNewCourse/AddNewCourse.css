@@ -29,7 +29,7 @@ form button {
     align-items: center;
     margin-left: 0.5rem;
     color: #fff;
-    background-color: lightskyblue;
+    background-color: #078a94;
     font-weight: 700;
     border-radius: 7px;
     padding-left: 5px;
@@ -88,7 +88,7 @@ form button:hover {
 
 
 .cats ul li .buttons .edit a{
-    background-color: #3d99e3;
+    background-color: #078a94;
 }
 
 .cats ul li .buttons .delete a{
@@ -147,7 +147,10 @@ body > form > label:nth-child(3) {
     margin-bottom: 1rem;
     text-align: center;
 }
-
+.cat-form h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+}
 .cat-form label {
     margin: 0 0 0.3rem 0.3rem;
 }
@@ -162,6 +165,6 @@ body > form > label:nth-child(3) {
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: lightskyblue;
+    background-color: #078a94;
     margin-bottom: 1.5rem;
 }

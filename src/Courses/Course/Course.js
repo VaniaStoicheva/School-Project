@@ -22,15 +22,15 @@ import courseService from "../../services/CourseService";
             <h3></h3>
             <p><span>Title: </span>{this.props.course.title}</p>
             <p><span>Description: </span>{this.props.course.description}</p>
-            <p><span>Hours: </span>{this.props.course.hours}</p>
+            {/* <p><span>Hours: </span>{this.props.course.hours}</p>
             <p><span>Day Visit: </span>{this.props.course.dayVisit}</p>
-            <p><span>Theachers: </span>{this.props.course.theachers}</p>
+            <p><span>Theachers: </span>{this.props.course.theachers}</p>*/}
               <ul class="buttons">
-                 <li className="btn edit"><a href="">Edit Info</a></li>
-                <li className="btn delete"><a href="">Delete</a></li> 
+                 <li className="btn edit"><a href="">Details</a></li>
+                {/* <li className="btn delete"><a href="">Delete</a></li>   */}
             </ul>  
             </li>
-            
+           
            )
              }
         

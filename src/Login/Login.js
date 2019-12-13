@@ -37,7 +37,9 @@ class Login extends React.Component {
     const passwordError=this.getFirstInputErrors('password');
 
     return <form className="Login">
+      
       <div className="form-control">
+      <h1>Login</h1>
         <label>Username</label>
         <input type="text" onChange={this.usernameChangeHandler} />
         {usermameError &&<div className='error'>{usermameError}</div>}

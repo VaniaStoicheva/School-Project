@@ -1,26 +1,4 @@
-/* .App {
-  text-align: center;
-} */
 
-/* .App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
- */
  @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
 
 * {
@@ -34,91 +12,11 @@ html, body {
     color: #333;
 }
 
-/* .navigation {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-    padding: 1rem;
-    background-color: #fff;
-}
 
-.navigation li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.navigation li a::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f015";
-    font-weight: 900;
-    padding: 5px;
-}
-
-.navigation li:nth-child(2) a::before {
-    content: "\f055";   
-}
-
-.navigation li:nth-child(3) a::before {
-    content: "\f1b0";
-}
-
-.navigation li:nth-child(4) a::before {
-    content: "\f2f6";
-}
-
-.navigation li:nth-child(5) a::before {
-    content: "\f234";
-}
-
-h1 {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 1rem;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-input[type=text], input[type="file"], input[type="number"], textarea, select {
-    padding: 0.5rem 7.5rem 0.5rem 1rem;
-    border-radius: 7px;
-    border: none ;
-    outline: none;
-    margin-bottom: 1rem;
-}
-
-input[type="number"] {
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-}
-
-textarea {
-    max-width: 19.5rem;
-    min-width: 19.5rem;
-    max-height: 15rem;
-    min-height: 3rem;
-}
-
-form button {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: 0.5rem;
-    color: #fff;
-    background-color: lightskyblue;
-    font-weight: 700;
-    border-radius: 7px;
-    padding-left: 5px;
-    margin-bottom: 1rem;
-    border: none;
-    padding: 15px;
-} */
 
 form button:hover {
     background-color: white;
-    color: lightblue;
+    color: #078a94;
 }
 
 .cats {
@@ -166,7 +64,7 @@ form button:hover {
 
 
 .cats ul li .buttons .edit a{
-    background-color: #3d99e3;
+    background-color: #078a94;
 }
 
 .cats ul li .buttons .delete a{
@@ -240,6 +138,6 @@ body > form > label:nth-child(3) {
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: lightskyblue;
+    background-color: #078a94;
     margin-bottom: 1.5rem;
 }

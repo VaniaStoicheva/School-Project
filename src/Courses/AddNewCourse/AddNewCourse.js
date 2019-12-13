@@ -4,7 +4,7 @@ import whitForm from '../../shared/hocs/whitForm';
 
 import * as yup from 'yup';
 
- class AddNewKourse extends React.Component{
+ class AddNewcourse extends React.Component{
      constructor(props){
          super(props);
          this.state=[
@@ -42,7 +42,7 @@ import * as yup from 'yup';
          return(
             <div>
             <form  className="cat-form" >
-                
+                <h1>Add New Course</h1>
                 <label htmlFor="name">Title</label>
                 <input name="title" type="text" onChange={this.titleOnChangeHandler} />
                 {titleError &&<div className='error'>{titleError}</div>}
@@ -67,22 +67,22 @@ import * as yup from 'yup';
                 <input name="upload" type="file" id="img" />
                
                 <label htmlFor="group">Direction</label>
-                <select name="kourse" id="group">
+                <select name="course" id="group">
                     <option value="Matematiks">Matematiks</option>
 				    <option value="Bulgarian language">Bulgarian language</option>
 				    <option value="Programming">Programming</option>
                 </select>
                 
-                <button type="button" onClick={this.submitHandler}>Add Kourse</button>
+                <button type="button" onClick={this.submitHandler}>Add New Course</button>
             </form>
              </div>
          )
      }
  }
  const schema=yup.object({
-    title: yup.string('Title kourse shuld be a string')
-    .required('Title kourse name is required')
-    .min(4,'Title kourse must be more than 4 chars'),
+    title: yup.string('Title course shuld be a string')
+    .required('Title course name is required')
+    .min(4,'Title course must be more than 4 chars'),
     description: yup.string().required('Description is required'),
     hours: yup.string().required('Hourse is required'), 
     visit: yup.string().required('Visit day is required'),
@@ -101,4 +101,4 @@ import * as yup from 'yup';
         img:''
      
  };
- export default whitForm(AddNewKourse,initialState, schema);
+ export default whitForm(AddNewcourse,initialState, schema);
