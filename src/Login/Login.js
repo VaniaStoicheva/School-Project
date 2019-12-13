@@ -5,34 +5,27 @@ import userService from '../services/UserService';
 import * as yup from 'yup';
 
 class Login extends React.Component {
-
+  state={error:null}
   usernameChangeHandler = this.props.controlChangeHandlerFactory('username');
   passwordChangeHandler = this.props.controlChangeHandlerFactory('password');
 
-  /* submitHandler = () => {
-    const errors = this.props.getFormErrorState();
-    if (!!errors) { return; }
-    const data = this.props.getFormState();
-    //this.props.login(this.props.history, data);
-  } */
+  
   submitHandler=()=>{
     this.props.runValidation()
    .then(formData=>console.log(formData)) ;
    const errors=this.props.getFormErrorState();
    if(!!errors){return;}
    const data=this.props.getFormState();
-   this.props.login(this.props.history, data);
-   /* userService.login(data).then(()=>{
-     this.props.history.push('/');
-    ; 
-   });*/
-
+   this.props.login(this.props.history, data).catch(error=>{
+     this.setState({error})
+   });
  };
   getFirstInputErrors=name=>{
     const errorState=this.props.getFormErrorState();
     return errorState && errorState[name] && errorState[name][0];
   }
   render() {
+    const {error}=this.state;
     const usermameError=this.getFirstInputErrors('username');
     const passwordError=this.getFirstInputErrors('password');
 
@@ -49,6 +42,8 @@ class Login extends React.Component {
         <input type="password" onChange={this.passwordChangeHandler} />
         {passwordError &&<div className='error'>{passwordError}</div>}
       </div>
+      <div className="error">{error && error}</div>
+      
       <div className="form-control">
         <button type="button" onClick={this.submitHandler}>Login</button>
       </div>

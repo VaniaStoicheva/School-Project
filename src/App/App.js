@@ -11,7 +11,8 @@ import AddNewCourse from "../Courses/AddNewCourse/AddNewCourse";
 import AddToCourse from "../Courses/AddToCourse/AddToCourse";
 import userService from '../services/UserService';
 import Logout from '../Logout/Logout';
-import Posts from "../Posts/Posts";
+import Posts from "../Comments/Posts/Posts";
+import CreatePost from '../Comments/CreatePost/CreatePost';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 
@@ -46,7 +47,7 @@ class App extends React.Component {
   }
 
   login = (history, data) => {
-    userService.login(data).then(() => {
+   return userService.login(data).then(() => {
       this.setState({ isLogged: true });
       history.push('/');
     });
@@ -56,7 +57,7 @@ class App extends React.Component {
   return (
     <BrowserRouter>
       <div className="App">
-       {/*<Loader local={true} isLoading={false} />  */} 
+       {/* <Loader local={true} isLoading={false} />    */}
         <Navigation isLogged={isLogged}/>
         <h1>Alegria -курсове за многознайковци</h1>
         <div className="Container">
@@ -64,13 +65,14 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact><Redirect to="/allCourses" /></Route>
             <Route path="/allCourses" render={render('', AllCourses)} />
-            <Route path="/addNewCourse" render={render('', AddNewCourse, { isLogged })}/>
-            <Route path="/addToCourse" render={render('', AddToCourse, { isLogged })} />
-            <Route path="/posts" render={render('', Posts, { isLogged })} />
+            {isLogged && <Route path="/addNewCourse" render={render('', AddNewCourse, { isLogged })}/>}
+            {isLogged && <Route path="/addToCourse" render={render('', AddToCourse, { isLogged })} />}
+            {isLogged && <Route path="/createPost" render={render('', CreatePost, { isLogged })} />}
+            {isLogged && <Route path="/posts" render={render('', Posts, { isLogged })} />}
             <Route path="/register" render={render('', Register)} />
             <Route path="/login" render={render('', Login, {isLogged, login:this.login})} />
             <Route path="/logout" render={render('Logout', Logout, {isLogged, logout:this.logout})} />
-            <Route path="/notfound" render={render('NotFound', NotFound)} />
+            <Route path="*" render={render('', NotFound)} />
           </Switch>
         </div>
         <Footer isLogged={isLogged}/>

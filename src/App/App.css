@@ -141,3 +141,7 @@ body > form > label:nth-child(3) {
     background-color: #078a94;
     margin-bottom: 1.5rem;
 }
+.error {
+    color:rgb(187, 19, 19);
+    align-content: center;
+  }
