@@ -15,8 +15,7 @@ import courseService from "../../services/CourseService";
         
     render(){
         const course=this.props;
-           return  (
-            
+           return  ( 
            <li>
              <img src='/logo2.png' /> 
             <h3></h3>
@@ -32,11 +31,7 @@ import courseService from "../../services/CourseService";
             </li>
            
            )
-             }
-        
-            
-    
+             }    
 }
-      
 
 export default Course;

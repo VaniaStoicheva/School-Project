@@ -15,9 +15,9 @@ function Navigation({ isLogged }) {
         <img  src="logod.bmp" alt="my-app-logo" />
       </Link>
         <Link to="/">Home</Link>
-        <Link to="/allCourses">Courses</Link>
+        <Link to="/allCourses">All Courses</Link>
         {isLogged && <Link to="/addNewCourse">Add New Course</Link>}
-        {isLogged && <Link to="/addToCourse">Add Student To Course</Link>}
+        {/* {isLogged && <Link to="/addToCourse">Add Student To Course</Link>} */}
         {isLogged && <Link to="/createPost">Create Post</Link>}
         {isLogged && <Link to="/posts">All Posts</Link>}
         {!isLogged && <Link to="/register">Register</Link>}

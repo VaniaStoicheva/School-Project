@@ -1,5 +1,4 @@
 import React from 'react';
-import Loader from "./Loader/Loader";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import Main from "./Main/Main";
@@ -57,7 +56,6 @@ class App extends React.Component {
   return (
     <BrowserRouter>
       <div className="App">
-       {/* <Loader local={true} isLoading={false} />    */}
         <Navigation isLogged={isLogged}/>
         <h1>Alegria -курсове за многознайковци</h1>
         <div className="Container">
@@ -75,7 +73,7 @@ class App extends React.Component {
             <Route path="*" render={render('', NotFound)} />
           </Switch>
         </div>
-        <Footer isLogged={isLogged}/>
+        {/* <Footer isLogged={isLogged}/> */}
       </div>
     </BrowserRouter>
   );
