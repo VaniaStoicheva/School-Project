@@ -2,6 +2,7 @@ import React from "react";
 import Course from "../Course/Course";
 import PropTypes from 'prop-types';
 import courseService from "../../services/CourseService";
+import './AllCourses.css';
 
  
 class AllCourses extends React.Component{
