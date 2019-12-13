@@ -4,29 +4,33 @@ import '../shared/styles/LoginAndRegister.css';
 import whitForm from '../shared/hocs/whitForm';
 import userService from '../services/UserService';
 
+
 import * as yup from 'yup';
 
 
 
 class Register extends React.Component {
-
+  constructor(props) {
+    super(props);
+    
+  }
   usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
   passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
   rePasswordOnChangeHandler = this.props.controlChangeHandlerFactory('rePassword');
 
  
 
-      submitHandler=()=>{
-         this.props.runValidation()
-        .then(formData=>console.log(formData)) ;
-        const errors=this.props.getFormErrorState();
-        if(!!errors){return;}
-        const data=this.props.getFormState();
-        userService.register(data).then(()=>{
-          this.props.history.push('/login');
-        });
+  submitHandler=()=>{
+    this.props.runValidation()
+   .then(formData=>console.log(formData)) ;
+   const errors=this.props.getFormErrorState();
+   if(!!errors){return;}
+   const data=this.props.getFormState();
+   userService.register(data).then(()=>{
+     this.props.history.push('/login');
+   });
 
-      };
+ };
       getFirstInputErrors=name=>{
         const errorState=this.props.getFormErrorState();
         return errorState && errorState[name] && errorState[name][0];

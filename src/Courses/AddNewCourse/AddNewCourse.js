@@ -1,22 +1,22 @@
 import React,{Component} from "react";
 import "./AddNewCourse.css";
 import whitForm from '../../shared/hocs/whitForm';
-
+import courseService from '../../services/CourseService';
 import * as yup from 'yup';
 
  class AddNewcourse extends React.Component{
      constructor(props){
          super(props);
-         this.state=[
+         /* this.state=[
              {
                 title:'',
-                description:"",
+                description:'',
                 hors:'',
                 visit:'',
                 teachers:'',
                 img:''
              }
-         ]
+         ] */
      }
      titleOnChangeHandler = this.props.controlChangeHandlerFactory('title');
      descriptionOnChangeHandler = this.props.controlChangeHandlerFactory('description');
@@ -26,7 +26,13 @@ import * as yup from 'yup';
 
      submitHandler=()=>{
         this.props.runValidation()
-        .then(formData=>console.log(formData))
+        .then(formData=>console.log(formData));
+        const data=this.props.getFormState();
+        console.log(data);
+        courseService.create(data).then(()=>{
+            console.log('successs')
+            this.props.history.push('/');
+        })
       };
 
       getFirstInputErrors=name=>{
@@ -94,7 +100,7 @@ import * as yup from 'yup';
   {
     
         title:'',
-        description:"",
+        description:'',
         hours:'',
         visit:'',
         teachers:'',

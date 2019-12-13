@@ -7,10 +7,10 @@ const CreatePost = ({ history }) => {
   const textareaRef = React.useRef();
 
   const createPost = React.useCallback(() => {
-    debugger;
+    
     const value = textareaRef.current.value;
     postService.create({ description: value }).then(() => {
-      history.push('/');
+      history.push('/posts');
     });
   }, [textareaRef, history]);
 
@@ -19,7 +19,7 @@ const CreatePost = ({ history }) => {
       <textarea ref={textareaRef}></textarea>
       <button type="button" onClick={createPost}>Create Post</button>
     </form>
-    <Posts limit={3} />
+    
   </div>;
 }
 

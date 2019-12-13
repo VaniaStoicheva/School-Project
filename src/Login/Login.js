@@ -1,11 +1,15 @@
 import React from 'react';
 import '../shared/styles/LoginAndRegister.css';
 import withForm from '../shared/hocs/whitForm';
-import userService from '../services/UserService';
+
 import * as yup from 'yup';
 
 class Login extends React.Component {
-  state={error:null}
+  state={
+    error:null,
+     login:false
+  
+}
   usernameChangeHandler = this.props.controlChangeHandlerFactory('username');
   passwordChangeHandler = this.props.controlChangeHandlerFactory('password');
 

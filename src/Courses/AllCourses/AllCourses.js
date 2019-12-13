@@ -1,35 +1,37 @@
 import React from "react";
 import Course from "../Course/Course";
-import data  from '../../data';
+
+import PropTypes from 'prop-types';
 
 import courseService from "../../services/CourseService";
 
  
 class AllCourses extends React.Component{
-    constructor(props){
-        super(props)
-    }
- 
-state={
-  courses:null
-};
+   state={
+    courses:null
+    };
+  textInput=null;
 
 componentDidMount(){
-  courseService.load().then(courses=>{
+  courseService.load(null, this.props.limit).then(courses=>{
       this.setState({courses})
   })
 }
+inputChangeHandler = (e) => {
+    console.log(e.target.value);
+  }
     render(){
-        const {course}=this.props;
+        const {courses}=this.state;
         return(
             <main>
             <section class="cats">
                 <ul>
+                {courses ?
                     <li>
-                   
-   
-                     <Course course={data[0]}/> 
+                  {courses.map((course)=>
+    <Course limit={3} key={course._id} title={course.title} description={course.description}  teacher={course.teacher}>{course.description}</Course>)} 
                     </li>
+                    : <div>Loading...</div>}
                 </ul>
             </section>
             </main>
@@ -37,4 +39,8 @@ componentDidMount(){
     }
      
  }
+ AllCourses.propTypes = {
+  limit: PropTypes.number
+}
+
  export default AllCourses;
