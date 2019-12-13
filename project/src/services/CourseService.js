@@ -1,4 +1,4 @@
-import data from "../data";
+
 
 const courseService={
     load: function (id, limit) {

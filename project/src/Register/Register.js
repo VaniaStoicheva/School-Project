@@ -10,10 +10,7 @@ import * as yup from 'yup';
 
 
 class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    
-  }
+ 
   usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
   passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
   rePasswordOnChangeHandler = this.props.controlChangeHandlerFactory('rePassword');

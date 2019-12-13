@@ -22,7 +22,7 @@ inputChangeHandler = (e) => {
         const {courses}=this.state;
         return(
             <main>
-            <section class="cats">
+            <section className="cats">
                 <ul>
                 {courses ?
                     <li>

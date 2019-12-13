@@ -1,23 +1,11 @@
-import React,{Component} from "react";
+import React from "react";
 import "./AddNewCourse.css";
 import whitForm from '../../shared/hocs/whitForm';
 import courseService from '../../services/CourseService';
 import * as yup from 'yup';
 
  class AddNewcourse extends React.Component{
-     constructor(props){
-         super(props);
-         /* this.state=[
-             {
-                title:'',
-                description:'',
-                hors:'',
-                visit:'',
-                teachers:'',
-                img:''
-             }
-         ] */
-     }
+   
      titleOnChangeHandler = this.props.controlChangeHandlerFactory('title');
      descriptionOnChangeHandler = this.props.controlChangeHandlerFactory('description');
      hoursOnChangeHandler = this.props.controlChangeHandlerFactory('hours');

@@ -1,14 +1,9 @@
 import React from "react";
 import "./Course.css";
-import courseService from "../../services/CourseService";
-
-
 
 
   class Course extends React.Component{ 
-    constructor(props){
-        super(props)
-    }
+    
     state={
         course:null
     }
@@ -17,7 +12,7 @@ import courseService from "../../services/CourseService";
         const course=this.props;
            return  ( 
            <li>
-             <img src='/logo2.png' /> 
+             <img src='/logo2.png' alt="course-img"/> 
             <h3></h3>
             <p><span>Title: </span>{course.title}</p>
             <p><span>Description: </span>{course.description}</p>
@@ -31,7 +26,7 @@ import courseService from "../../services/CourseService";
             </li>
            
            )
-             }    
+      }    
 }
 
 export default Course;

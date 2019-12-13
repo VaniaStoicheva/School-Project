@@ -1,5 +1,4 @@
 import React from 'react';
-import Posts from '../Posts/Posts';
 import postService from '../../services/PostService';
 import './CreatePost.css';
 

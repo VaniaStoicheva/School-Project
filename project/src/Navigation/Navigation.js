@@ -2,10 +2,6 @@ import React from 'react';
 import "./Navigation.css";
 import Link from "../shared/Link/Link";
 
-
-
-
-
 function Navigation({ isLogged }) {
     return <nav className="navigation">
       
