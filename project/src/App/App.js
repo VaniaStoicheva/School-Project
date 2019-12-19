@@ -13,6 +13,7 @@ import Logout from '../Logout/Logout';
 import Posts from "../Comments/Posts/Posts";
 import CreatePost from '../Comments/CreatePost/CreatePost';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Notification from '../Notification/Notification';
 
 
 function render(title, Cmp, otherProps) {
@@ -59,7 +60,7 @@ class App extends React.Component {
         <Navigation isLogged={isLogged}/>
         <h1>Alegria -курсове за многознайковци</h1>
         <div className="Container">
-          
+          <Notification />
           <Switch>
             <Route path="/" exact><Redirect to="/allCourses" /></Route>
             <Route path="/allCourses" render={render('', AllCourses)} />

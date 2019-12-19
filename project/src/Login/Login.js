@@ -3,65 +3,65 @@ import '../shared/styles/LoginAndRegister.css';
 import withForm from '../shared/hocs/whitForm';
 
 import * as yup from 'yup';
+import requester from '../services/requester';
+import observer from '../services/observer';
 
 class Login extends React.Component {
-  state={
-    error:null,
-     login:false
-  
-}
-  usernameChangeHandler = this.props.controlChangeHandlerFactory('username');
-  passwordChangeHandler = this.props.controlChangeHandlerFactory('password');
-
-  
-  submitHandler=()=>{
-    this.props.runValidation()
-   .then(formData=>console.log(formData)) ;
-   const errors=this.props.getFormErrorState();
-   if(!!errors){return;}
-   const data=this.props.getFormState();
-   this.props.login(this.props.history, data).catch(error=>{
-     this.setState({error})
-   });
- };
-  getFirstInputErrors=name=>{
-    const errorState=this.props.getFormErrorState();
-    return errorState && errorState[name] && errorState[name][0];
+  constructor(props){
+    super(props);
+    this.state={
+      username:null,
+      password:null,
+      error:null,
+       login:false
+    
   }
-  render() {
-    const {error}=this.state;
-    const usermameError=this.getFirstInputErrors('username');
-    const passwordError=this.getFirstInputErrors('password');
+  }
+  
+  
 
-    return <form className="Login">
+  handleChange=e=>{
+  let fielddName=e.target.name;
+  let fieldValue=e.target.value;
+  this.setState({[fielddName]:fieldValue});
+  }
+  handleSubmit = e =>{
+    e.preventDefault();
+    requester.post('user','login','basic',this.state)
+    .then(res=>{
+      observer.trigger(observer.events.loginUser,res.username);
+      observer.trigger(observer.events.notification,{success:true, message:'Success login!'})
+      sessionStorage.setItem('authtoken',res._kmd.authtoken)
+    }).catch(res=>observer.trigger(observer.events.notification,{type:'error',message:res.responseJSON.description})); 
+  }
+ 
+  render=()=> {
+    
+
+    return(
+       <form className="Login" id="loginForm" onSubmit={this.handleSubmit}>
       
       <div className="form-control">
       <h1>Login</h1>
         <label>Username</label>
-        <input type="text" onChange={this.usernameChangeHandler} />
-        {usermameError &&<div className='error'>{usermameError}</div>}
+        <input type="text" onChange={this.handleChange} name="username"/>
+        
       </div>
       <div className="form-control">
         <label>Password</label>
-        <input type="password" onChange={this.passwordChangeHandler} />
-        {passwordError &&<div className='error'>{passwordError}</div>}
+        <input type="password" onChange={this.handleChange} name="password"/>
+       
       </div>
-      <div className="error">{error && error}</div>
+     
       
       <div className="form-control">
-        <button type="button" onClick={this.submitHandler}>Login</button>
+        <button type="submit" >Login</button>
       </div>
-    </form>;
+    </form>
+    )
   }
 }
-const schema=yup.object({
-  username: yup.string('Username shuld be a string')
-  .required('Username is required')
-  .min(4,'Username must be more than 4 chars'),
-    password: yup.string('Password must be a string')
-    .required('Password is required')
-    .min(6,'Password must be more than 6 chars')
-})
+
     
     
-export default withForm(Login, { username: '', password: '' },schema);
+export default Login;

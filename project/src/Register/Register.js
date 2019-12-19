@@ -6,57 +6,58 @@ import userService from '../services/UserService';
 
 
 import * as yup from 'yup';
+import requester from '../services/requester';
+import observer from '../services/observer';
 
 
 
 class Register extends React.Component {
- 
-  usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
-  passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
-  rePasswordOnChangeHandler = this.props.controlChangeHandlerFactory('rePassword');
+  constructor(props){
+    super(props);
+    this.state={
+      username:null,
+      password:null,
+      repassword:null
+    }
+  }
 
- 
 
-  submitHandler=()=>{
-    this.props.runValidation()
-   .then(formData=>console.log(formData)) ;
-   const errors=this.props.getFormErrorState();
-   if(!!errors){return;}
-   const data=this.props.getFormState();
-   userService.register(data).then(()=>{
-     this.props.history.push('/login');
-   });
-
- };
-      getFirstInputErrors=name=>{
-        const errorState=this.props.getFormErrorState();
-        return errorState && errorState[name] && errorState[name][0];
-      }
+  handleChange=e=>{
+    let fielddName=e.target.name;
+    let fieldValue=e.target.value;
+    this.setState({[fielddName]:fieldValue});
+    }
+    handleSubmit = e =>{
+      e.preventDefault();
+      requester.post ('user','','basic',this.state)
+      .then(res=>{
+        observer.trigger(observer.events.loginUser,res.username)
+        sessionStorage.setItem('authtoken',res._kmd.authtoken)
+      }); 
+    }
   render(){
-    const usermameError=this.getFirstInputErrors('username');
-    const passwordError=this.getFirstInputErrors('password');
-    const rePasswordError=this.getFirstInputErrors('rePassword');
+    
 
     return <form className="Register">
       
     <div className="form-control">
     <h1>Register</h1>
       <label>Username</label>
-      <input type="text" onChange={this.usernameOnChangeHandler} />
-      {usermameError &&<div className='error'>{usermameError}</div>}
+      <input type="text" onChange={this.handleChange} name="username"/>
+      
     </div>
     <div className="form-control">
       <label>Password</label>
-      <input type="password" onChange={this.passwordOnChangeHandler} />
-      {passwordError &&<div className='error'>{passwordError}</div>}
+      <input type="password" onChange={this.handleChange} name="password"/>
+     
     </div>
     <div className="form-control">
       <label>Re-Password</label>
-      <input type="password" onChange={this.rePasswordOnChangeHandler}  />
-      {rePasswordError &&<div className='error'>{rePasswordError}</div>}
+      <input type="password" onChange={this.handleChange}  name="repassword"/>
+    
     </div>
     <div className="form-control">
-    <button type="button" onClick={this.submitHandler}>Register</button>
+    <button type="button" onClick={this.handleSubmit}>Register</button>
     </div>
   </form>;
 }
