@@ -46,11 +46,18 @@ import observer from '../../services/observer';
       return (
     <div className="CreatePost">
     <form>
-    <label htmlFor="img">Image</label>
-                <input name="imgUrl"  id="img" onChange={this.handleChange}/>
-               
-      <textarea  name="comment" onChange={this.handleChange}></textarea>
+      <div>
+      <label htmlFor="img">Image</label>
+      <span><input name="imgUrl"  id="img" onChange={this.handleChange}/><br/></span>
+      </div>
+    
+        <div>
+        <textarea  name="comment" onChange={this.handleChange}></textarea>
+        </div>       
+      <div>
       <button type="submit" onClick={this.handleSubmit}>Create Post</button>
+      </div>
+     
     </form>
     </div>
       )

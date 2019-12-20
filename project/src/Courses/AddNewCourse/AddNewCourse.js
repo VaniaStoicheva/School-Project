@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddNewCourse.css";
 import requester from "../../services/requester";
+import observer from "../../services/observer";
 
  class AddNewcourse extends React.Component{
      constructor(props){
@@ -27,7 +28,14 @@ import requester from "../../services/requester";
           .then(res=>{
             console.log('Success add new course!');
             this.props.history.push('/allCourses');
-           } ); 
+           } ).catch(res=>{
+            observer.trigger(observer.events.notification,{
+              type:'error',
+              message:res.responseJSON.description
+            })
+            this.setState({comment:''})
+          }
+            );  
         }
    
      render(){

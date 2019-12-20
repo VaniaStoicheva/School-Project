@@ -4,7 +4,7 @@
     } 
   
   textarea {
-    width: 40%;
+    width: 30%;
     display: block;
     margin: 0 auto;
     resize: none;
@@ -14,8 +14,8 @@
     
     button{
     background-color: #234465; color: white;
-    padding: 1%;
-    width: 7%;
+    padding: 11%;
+    width: 17%;
     border-radius: 6px; display: block;
     margin: 0 auto; border:none; margin-top: 0.5%; border: 2px solid white; margin-bottom: 2%;
     }

@@ -33,7 +33,7 @@ import requester from "../../services/requester";
              <ul>
                <li>
                <img src={course.imgUrl} alt="course-img"/> 
-            <h3></h3>
+            
             <p><span>Title: </span>{course.title}</p>
             <p><span>Description: </span>{course.description}</p>
             <ul className="buttons">

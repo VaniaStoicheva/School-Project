@@ -23,6 +23,7 @@ class AllCourses extends React.Component{
     render(){
         const {courses}=this.state;
         return(
+          
             <main>
             <section className="cats">
                 <ul>
