@@ -33,7 +33,6 @@ class App extends React.Component {
   constructor(props){
     super(props)
     const isLogged=!!sessionStorage.getItem('authtoken');
-    
     this.state={ isLogged }
   }
 
@@ -47,13 +46,16 @@ class App extends React.Component {
         <h1>Alegria -курсове за многознайковци</h1>
         <div className="Container">
           <Notification />
+          
           <Switch>
             <Route path="/" exact><Redirect to="/allCourses" /></Route>
             <Route path="/allCourses" render={render('', AllCourses)} />
+
             {isLogged && <Route path="/addNewCourse" render={render('', AddNewCourse, { isLogged })}/>}
             {isLogged && <Route path="/addToCourse" render={render('', AddToCourse, { isLogged })} />}
             {isLogged && <Route path="/createPost" render={render('', CreatePost, { isLogged })} />}
             {isLogged && <Route path="/posts" render={render('', Posts, { isLogged })} />}
+
              <Route path="/register" render={render('', Register,{isLogged})} />
              <Route path="/login" render={render('', Login, {isLogged})} />
             <Route path="/logout" render={render('Logout', Logout, {isLogged})} />

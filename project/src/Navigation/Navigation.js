@@ -19,19 +19,15 @@ class Navigation extends React.Component {
       <div>
       <span id="helloUser">Hello, {this.state.username}</span>
       </div>
+    
     return <nav className="navigation">  
     <ul>
     <Link to="/">
       <img  src="logod.bmp" alt="my-app-logo" />
-      
-
-    </Link>
+      </Link>
       <Link to="/">Home</Link>
       <Link to="/allCourses">All Courses</Link>
-    
-      
       <Link to="/addNewCourse">Add New Course</Link>
-      {/* {isLogged && <Link to="/addToCourse">Add Student To Course</Link>} */}
        <Link to="/createPost">Create Post</Link>
        <Link to="/posts">All Posts</Link>
       <Link to="/register">Register</Link>
