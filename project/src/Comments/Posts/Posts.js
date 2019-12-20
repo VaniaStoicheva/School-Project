@@ -1,26 +1,42 @@
 import React from "react";
 import "./Posts.css";
-import PropTypes from 'prop-types';
+
+
 import Post from '../Post/Post';
-import postService from '../../services/PostService';
+
+
+import requester from '../../services/requester';
+import observer from "../../services/observer";
 
 
 
 class Posts extends React.Component {
-  state = {
-    posts: null
-  };
-  textInput = null;
-
-  componentDidMount() {
-    postService.load(null, this.props.limit).then(posts => {
-      this.setState({ posts });
+  constructor(props){
+    super(props);
+    this.state = {
+      posts: ''
+    };
+  }
+ 
+  getPosts=()=>{
+    requester.get('appdata','comments','kinvey')
+    .then(res=>{
+      
+        /* observer.trigger(observer.events.notification,{success:true, message:'Success post created!'})
+        sessionStorage.setItem('authtoken',res._kmd.authtoken);
+        this.props.history.push('/posts'); */
+        this.setState({posts:res});
+      }).catch(res=>{
+        observer.trigger(observer.events.notification,{
+          type:'error',
+          message:res.responseJSON.description
+        })
+        
     });
   }
 
-  inputChangeHandler = (e) => {
-    console.log(e.target.value);
-  }
+  componentDidMount=()=>this.getPosts();
+
  
   render() {
     const { posts } = this.state;
@@ -31,15 +47,13 @@ class Posts extends React.Component {
         <div className="Posts">
           {posts.map((post) =>
          
-            <Post key={post._id} limit={3} imageUrl="/logo1.png" imageAlt="alt"   author={post.author.username}>{post.description}</Post>)}
+            <Post key={post._id}  imageUrl={post.imgUrl} imageAlt="alt"   author={post.author}>{post.comment}</Post>)}
         </div> : <div>Loading...</div>
       }
     </div>
   }
 }
 
-Posts.propTypes = {
-  limit: PropTypes.number
-}
+
 
 export default Posts;

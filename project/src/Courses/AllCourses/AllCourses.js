@@ -1,34 +1,35 @@
 import React from "react";
 import Course from "../Course/Course";
-import PropTypes from 'prop-types';
-import courseService from "../../services/CourseService";
 import './AllCourses.css';
+import requester from "../../services/requester";
 
  
 class AllCourses extends React.Component{
-   state={
-    courses:null
-    };
-  textInput=null;
-
-componentDidMount(){
-  courseService.load(null, this.props.limit).then(courses=>{
-      this.setState({courses})
-  })
-}
-inputChangeHandler = (e) => {
-    console.log(e.target.value);
+  constructor(props){
+    super(props);
+    this.state={
+      courses:[]
+    }
   }
+  getPosts=()=>{
+    requester.get('appdata','courses','kinvey')
+    .then(res=>{
+      this.setState({courses:res})
+    });
+  }
+
+  componentDidMount=()=>this.getPosts();
+
     render(){
         const {courses}=this.state;
         return(
             <main>
             <section className="cats">
                 <ul>
-                {courses ?
+                {this.state.courses ?
                     <li>
-                  {courses.map((course)=>
-    <Course limit={3} key={course._id} title={course.title} description={course.description}  teacher={course.teacher}>{course.description}</Course>)} 
+                  {this.state.courses.map((course)=>
+    <Course  key={course._id} title={course.title} description={course.description}  teacher={course.teacher} imgUrl={course.imgUrl}>{course.description}</Course>)} 
                     </li>
                     : <div>Loading...</div>}
                 </ul>
@@ -38,8 +39,6 @@ inputChangeHandler = (e) => {
     }
      
  }
- AllCourses.propTypes = {
-  limit: PropTypes.number
-}
+ 
 
  export default AllCourses;

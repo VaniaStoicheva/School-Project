@@ -8,7 +8,6 @@ import NotFound from "../NotFound/NotFound";
 import AllCourses from "../Courses/AllCourses/AllCourses";
 import AddNewCourse from "../Courses/AddNewCourse/AddNewCourse";
 import AddToCourse from "../Courses/AddToCourse/AddToCourse";
-import userService from '../services/UserService';
 import Logout from '../Logout/Logout';
 import Posts from "../Comments/Posts/Posts";
 import CreatePost from '../Comments/CreatePost/CreatePost';
@@ -22,36 +21,23 @@ function render(title, Cmp, otherProps) {
   };
 }
 
-function parseCookeis() {
+/* function parseCookeis() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
     const [cookieName, cookieValue] = cookie.split('=');
     acc[cookieName] = cookieValue;
     return acc;
   }, {})
-}
+} */
 
 class App extends React.Component {
   constructor(props){
     super(props)
-    const cookies=parseCookeis();
-    const isLogged=!!cookies['x-auth-token'];
+    const isLogged=!!sessionStorage.getItem('authtoken');
+    
     this.state={ isLogged }
   }
 
-  logout = (history) => {
-    userService.logout().then(() => {
-      this.setState({ isLogged: false });
-      history.push('/');
-      return null;
-    });
-  }
-
-  login = (history, data) => {
-   return userService.login(data).then(() => {
-      this.setState({ isLogged: true });
-      history.push('/');
-    });
-  }
+  
   render(){
     const { isLogged }=this.state;
   return (
@@ -68,9 +54,9 @@ class App extends React.Component {
             {isLogged && <Route path="/addToCourse" render={render('', AddToCourse, { isLogged })} />}
             {isLogged && <Route path="/createPost" render={render('', CreatePost, { isLogged })} />}
             {isLogged && <Route path="/posts" render={render('', Posts, { isLogged })} />}
-            <Route path="/register" render={render('', Register)} />
-            <Route path="/login" render={render('', Login, {isLogged, login:this.login})} />
-            <Route path="/logout" render={render('Logout', Logout, {isLogged, logout:this.logout})} />
+             <Route path="/register" render={render('', Register,{isLogged})} />
+             <Route path="/login" render={render('', Login, {isLogged})} />
+            <Route path="/logout" render={render('Logout', Logout, {isLogged})} />
             <Route path="*" render={render('', NotFound)} />
           </Switch>
         </div>

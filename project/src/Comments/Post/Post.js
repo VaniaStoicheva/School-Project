@@ -7,8 +7,7 @@ function Post({ imageUrl, imageAlt, children, author }) {
     <p className="description">{children}</p>
     <div>
       <span>
-        <small>Author:</small>
-        {author}
+       
       </span>
     </div>
   </div>;

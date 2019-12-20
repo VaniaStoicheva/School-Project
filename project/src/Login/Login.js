@@ -1,8 +1,5 @@
 import React from 'react';
 import '../shared/styles/LoginAndRegister.css';
-import withForm from '../shared/hocs/whitForm';
-
-import * as yup from 'yup';
 import requester from '../services/requester';
 import observer from '../services/observer';
 
@@ -10,11 +7,8 @@ class Login extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      username:null,
-      password:null,
-      error:null,
-       login:false
-    
+      username:'',
+      password:''
   }
   }
   
@@ -31,8 +25,17 @@ class Login extends React.Component {
     .then(res=>{
       observer.trigger(observer.events.loginUser,res.username);
       observer.trigger(observer.events.notification,{success:true, message:'Success login!'})
-      sessionStorage.setItem('authtoken',res._kmd.authtoken)
-    }).catch(res=>observer.trigger(observer.events.notification,{type:'error',message:res.responseJSON.description})); 
+      sessionStorage.setItem('authtoken',res._kmd.authtoken);
+      this.props.history.push('/allCourses');
+    })
+    .catch(res=>{
+      observer.trigger(observer.events.notification,{
+        type:'error',
+        message:res.responseJSON.description
+      })
+      this.setState({username:'',password:''})
+    }
+      ); 
   }
  
   render=()=> {

@@ -1,11 +1,6 @@
 import React from 'react';
 
 import '../shared/styles/LoginAndRegister.css';
-import whitForm from '../shared/hocs/whitForm';
-import userService from '../services/UserService';
-
-
-import * as yup from 'yup';
 import requester from '../services/requester';
 import observer from '../services/observer';
 
@@ -15,9 +10,9 @@ class Register extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      username:null,
-      password:null,
-      repassword:null
+      username:'',
+      password:'',
+      repassword:''
     }
   }
 
@@ -32,8 +27,19 @@ class Register extends React.Component {
       requester.post ('user','','basic',this.state)
       .then(res=>{
         observer.trigger(observer.events.loginUser,res.username)
+        observer.trigger(observer.events.notification,{success:true, message:'Success register!'})
         sessionStorage.setItem('authtoken',res._kmd.authtoken)
-      }); 
+        this.props.history.push('/allCourses');
+      }).catch(res=>{
+        observer.trigger(observer.events.notification,{
+          type:'error',
+          message:res.responseJSON.description
+        })
+        if(this.username==='' || this.password==='' || this.repassword==='' || this.password!==this.repassword){
+          observer.trigger(observer.events.notification,{type:'error', message:'Password and repassword don`t match!'})
+        }
+        this.setState({username:'',password:'',repassword:''})
+      } )
     }
   render(){
     
@@ -62,22 +68,5 @@ class Register extends React.Component {
   </form>;
 }
 }
-const initialFormState = {
-  username: '',
-  password: '',
-  rePassword: ''
-};
-const schema=yup.object({
-  username: yup.string('Username shuld be a string')
-  .required('Username is required')
-  .min(4,'Username must be more than 4 chars'),
-    password: yup.string('Password must be a string')
-    .required('Password is required')
-    .min(6,'Password must be more than 6 chars'),
-    rePassword: yup.string('Password must be a string')
-    .oneOf([yup.ref('password'),null],'Pawword dont match')
-    .required('Password is required')
-    .min(6,'Password must be more than 6 chars')
-    
-})
-export default whitForm(Register,initialFormState, schema);
+
+export default Register;

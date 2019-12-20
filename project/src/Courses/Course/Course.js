@@ -1,30 +1,50 @@
 import React from "react";
 import "./Course.css";
+import { Link } from 'react-router-dom';
+import requester from "../../services/requester";
+
 
 
   class Course extends React.Component{ 
-    
-    state={
-        course:null
+    constructor(props){
+      super(props)
+      const isLogged=!!sessionStorage.getItem('authtoken');
+      this.state={ 
+        isLogged ,
+      course:[]
+      }
     }
+    deletedCourse=()=>{
+     requester.remove('appdata','courses','kinvey',this._id)
+      .then(console.log('deleted')) 
+    }; 
+
+    detailsHandler=()=>{
+
+    };
+
         
     render(){
         const course=this.props;
+       
            return  ( 
-           <li>
-             <img src='/logo2.png' alt="course-img"/> 
+             <main>
+           <section className="cats">
+             <ul>
+               <li>
+               <img src={course.imgUrl} alt="course-img"/> 
             <h3></h3>
             <p><span>Title: </span>{course.title}</p>
             <p><span>Description: </span>{course.description}</p>
-            {/* <p><span>Hours: </span>{course.hours}</p>
-            <p><span>Day Visit: </span>{course.dayVisit}</p> */}
-            {/* <p><span>Theachers: </span>{course.teacher}</p> */}
-              <ul class="buttons">
-                 <li className="btn edit"><a href="">Details</a></li>
-                <li className="btn delete"><a href="">Delete</a></li>   
-            </ul>  
-            </li>
+            <ul className="buttons">
+              <Link className="btn edit" onClick={this.detailsHandler} to={'/allCourses/details/{id}'} >Details</Link>
+              <Link className="btn delete" to={'/allCourses/delete/{id}'} onClick={this.deletedCourse}>Delete</Link> 
+            </ul> 
+               </li>
+             </ul>
            
+            </section>
+           </main>
            )
       }    
 }

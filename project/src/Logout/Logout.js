@@ -7,7 +7,10 @@ class Logout extends React.Component{
     requester.post('user','_logout','kinvey')
     .then(res=>sessionStorage.removeItem('authtoken'));
   }
-  render=()=><Redirect to='/' />
+  render=()=>{
+    this.logout();
+    return <Redirect to='/' />
+  }
 }
 
 export default Logout;
